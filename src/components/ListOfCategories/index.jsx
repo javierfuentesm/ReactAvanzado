@@ -6,7 +6,9 @@ import { categories } from '../../../api/db.json'
 export const ListOfCategories = () => (
   <List>
     {categories.map(item => (
-      <Item key={item}><Category /></Item>
+      <Item key={item.id}>
+        <Category {...item} />
+      </Item>
     ))}
   </List>
 )
