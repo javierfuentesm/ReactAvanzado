@@ -1,20 +1,32 @@
 import React, { useState, useEffect } from 'react'
 import { Category } from '../Category/index.jsx'
 import { List, Item } from './styles'
+import LoadingBar from 'react-top-loading-bar'
 
-export const ListOfCategories = () => {
+// Uso de custom hook
+
+const useCategoriesData = () => {
   const [categories, setCategories] = useState([])
-  const [showFixed, setShowFixed] = useState(false)
+  const [loading, setLoading] = useState(false)
   useEffect(() => {
+    setLoading(true)
     const fetchdata = async () => {
       const response = await window.fetch(
         'https://petgram-server.javierfuentesm.now.sh/categories'
       )
       const data = await response.json()
       setCategories(data)
+      setLoading(false)
     }
     fetchdata()
   }, [])
+
+  return { categories, loading }
+}
+
+export const ListOfCategories = () => {
+  const { categories, loading } = useCategoriesData()
+  const [showFixed, setShowFixed] = useState(false)
 
   useEffect(() => {
     const onScroll = e => {
@@ -26,7 +38,7 @@ export const ListOfCategories = () => {
   }, [showFixed])
 
   const renderList = fixed => (
-    <List className={fixed ? 'fixed' : ''}>
+    <List fixed={fixed}>
       {categories.map(item => (
         <Item key={item.id}>
           <Category {...item} />
@@ -37,7 +49,18 @@ export const ListOfCategories = () => {
 
   return (
     <>
-      {renderList()} {showFixed && renderList(true)}
+      {loading ? (
+        <LoadingBar
+          height={3}
+          color='#f11946'
+          progress={100}
+        />
+
+      ) : (
+        <>
+          {renderList()} {showFixed && renderList(true)}
+        </>
+      )}
     </>
   )
 }
