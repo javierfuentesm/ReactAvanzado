@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Category } from '../Category/index.jsx'
 import { List, Item } from './styles'
 import LoadingBar from 'react-top-loading-bar'
@@ -50,12 +50,9 @@ export const ListOfCategories = () => {
   return (
     <>
       {loading ? (
-        <LoadingBar
-          height={3}
-          color='#f11946'
-          progress={100}
-        />
-
+        <>
+          <LoadingBar height={5} color='#48D1CC' progress={100} />
+        </>
       ) : (
         <>
           {renderList()} {showFixed && renderList(true)}
