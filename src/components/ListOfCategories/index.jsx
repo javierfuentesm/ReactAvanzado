@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Category } from '../Category/index.jsx'
 import { List, Item } from './styles'
 import LoadingBar from 'react-top-loading-bar'
