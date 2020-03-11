@@ -2,30 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { Category } from '../Category/index.jsx'
 import { List, Item } from './styles'
 import LoadingBar from 'react-top-loading-bar'
+import { useFetch } from '../../hooks/useFetch.jsx'
 
 // Uso de custom hook
 
-const useCategoriesData = () => {
-  const [categories, setCategories] = useState([])
-  const [loading, setLoading] = useState(false)
-  useEffect(() => {
-    setLoading(true)
-    const fetchdata = async () => {
-      const response = await window.fetch(
-        'https://petgram-server.javierfuentesm.now.sh/categories'
-      )
-      const data = await response.json()
-      setCategories(data)
-      setLoading(false)
-    }
-    fetchdata()
-  }, [])
-
-  return { categories, loading }
-}
-
 export const ListOfCategories = () => {
-  const { categories, loading } = useCategoriesData()
+  const { data: categories, loading } = useFetch('https://petgram-server.javierfuentesm.now.sh/categories')
   const [showFixed, setShowFixed] = useState(false)
 
   useEffect(() => {
