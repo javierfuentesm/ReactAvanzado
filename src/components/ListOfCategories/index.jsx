@@ -4,8 +4,6 @@ import { List, Item } from './styles'
 import LoadingBar from 'react-top-loading-bar'
 import { useFetch } from '../../hooks/useFetch.jsx'
 
-// Uso de custom hook
-
 export const ListOfCategories = () => {
   const { data: categories, loading } = useFetch('https://petgram-server.javierfuentesm.now.sh/categories')
   const [showFixed, setShowFixed] = useState(false)
