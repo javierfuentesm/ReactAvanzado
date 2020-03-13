@@ -23,18 +23,3 @@ export const Img = styled.img`
   top: 0;
   width: 100%;
 `
-
-export const Button = styled.button`
-  display: flex;
-  align-items: center;
-  padding-top: 8px;
-  transition: color0.5s ease;
-  & svg {
-    margin-right: 4px;
-  }
-  ${props =>
-    props.isOver &&
-    css`
-      color: red;
-    `}
-`

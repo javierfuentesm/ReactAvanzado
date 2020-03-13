@@ -15,14 +15,14 @@ const GET_SINGLE_PHOTO = gql`
     }
   }
 `
-
+const renderProp = ({ loading, error, data = { photo: {} } }) => {
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>Error...</p>
+  const { photo = {} } = data
+  return <PhotoCard {...photo} />
+}
 export const PhotoCardWithQuery = ({ id }) => (
   <Query query={GET_SINGLE_PHOTO} variables={{ id }}>
-    {({ loading, error, data = { photo: {} } }) => {
-      if (loading) return <p>Loading...</p>
-      if (error) return <p>Error...</p>
-      const { photo = {} } = data
-      return <PhotoCard {...photo} />
-    }}
+    {renderProp}
   </Query>
 )
