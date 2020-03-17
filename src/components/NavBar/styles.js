@@ -11,7 +11,6 @@ export const Link = styled(LinkRouter)`
   width: 100%;
   &[aria-current] {
     color: #000;
-
     &:after {
       ${fadeIn({ time: '0.5s' })};
       content: '.';
@@ -27,7 +26,7 @@ export const Nav = styled.nav`
   align-items: center;
   background: #fcfcfc;
   border-top: 1px solid #e0e0e0;
-  bottom: 0;
+  bottom: 0; 
   display: flex;
   height: 50px;
   justify-content: space-around;
