@@ -1,5 +1,6 @@
 import React from 'react'
 import { Img, ImgWrapper, Article } from './styles'
+import { Link } from '@reach/router'
 import { FavButton } from '../FavButton/index.jsx'
 import { useNearScreen } from '../../hooks/useNearScreen.jsx'
 import { ToggleLikeMutation } from '../../containers/ToggleLikeMutation.jsx'
@@ -16,11 +17,11 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE, liked }) => {
     <Article ref={ref}>
       {show && (
         <>
-          <a href={`/?detail=${id}`}>
+          <Link to={`/detail/${id}`}>
             <ImgWrapper>
               <Img src={src} />
             </ImgWrapper>
-          </a>
+          </Link>
           <ToggleLikeMutation>
             {toggleLike => {
               const handleFavClick = () => {
