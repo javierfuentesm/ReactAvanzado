@@ -9,7 +9,7 @@ const client = new ApolloClient({
   uri: 'https://petgram-server.javierfuentesm.now.sh/graphql',
   request: operation => {
     const token = window.sessionStorage.getItem('token')
-    const authorization = token ? `Bearer ${token}` : ''
+    const authorization = token ? `Bearer ${token}` : ' '
     operation.setContext({
       headers: {
         authorization
