@@ -4,7 +4,7 @@ import { List, Item } from './styles'
 import LoadingBar from 'react-top-loading-bar'
 import { useFetch } from '../../hooks/useFetch.jsx'
 
-export const ListOfCategories = () => {
+const ListOfCategoriesComponent = () => {
   const { data: categories, loading } = useFetch('https://petgram-server.javierfuentesm.now.sh/categories')
   const [showFixed, setShowFixed] = useState(false)
 
@@ -41,3 +41,5 @@ export const ListOfCategories = () => {
     </>
   )
 }
+
+export const ListOfCategories = React.memo(ListOfCategoriesComponent)
