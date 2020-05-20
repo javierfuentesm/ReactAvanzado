@@ -1,16 +1,18 @@
 import React from 'react'
 import { ListOfCategories } from '../components/ListOfCategories/index.jsx'
 import { ListOfPhotoCards } from '../containers/ListofPhotoCards.jsx'
-import { Helmet } from 'react-helmet'
+import { Layout } from '../components/Layout/index.jsx'
+
 export const Home = ({ id }) => {
   return (
     <>
-      <Helmet>
-        <title>Petgram tu app de fotos de mascotas</title>
-        <meta name='description' content='Con petgram puedes encontrar fotos de animales domesticos muy bonitos ' />
-      </Helmet>
-      <ListOfCategories />
-      <ListOfPhotoCards categoryId={id} />
+      <Layout
+        title='Petgram tu app de fotos de mascota'
+        subtitle='Con petgram puedes encontrar fotos de animales domesticos muy bonitos '
+      >
+        <ListOfCategories />
+        <ListOfPhotoCards categoryId={id} />
+      </Layout>
     </>
   )
 }
