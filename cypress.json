@@ -1,0 +1,7 @@
+{
+    "baseUrl":"https://petgram-rjfm.now.sh",
+    "chromeWebSecurity": false,
+    "viewportWidth": 500,
+    "viewportHeight":800
+
+}
